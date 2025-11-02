@@ -6,20 +6,20 @@
 <title>Kairah Studio</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0e0b1b, #1e1632); color: white; }
-.gold { color: #D4AF37; }
-.section { padding: 4rem 2rem; }
-.card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 1.5rem; backdrop-filter: blur(15px); transition: transform 0.3s, box-shadow 0.3s; }
-.card:hover { transform: translateY(-8px); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-.accordion { cursor: pointer; }
-.accordion + .panel { display: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border-left: 3px solid #D4AF37; margin-bottom: 1rem; }
-button.buy { background: #D4AF37; color: black; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; margin-top: 1rem; width: 100%; }
-button.buy:hover { background: #b9962f; }
-.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50; }
-.modal-content { background: #0b0a0f; border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 2rem; max-width: 400px; width: 90%; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 51; }
-button.pay-option { background: white; color: black; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; margin: 0.25rem 0; width: 100%; }
-button.pay-option:hover { background: #f0d55f; }
-button.close { background: gray; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; width: 100%; margin-top: 0.5rem; }
+  body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg,#0e0b1b,#1e1632); color:white; }
+  .gold { color:#D4AF37; }
+  .section { padding:4rem 2rem; }
+  .card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:1rem; padding:1.5rem; backdrop-filter:blur(15px); transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform:translateY(-8px); box-shadow:0 0 30px rgba(212,175,55,0.3); }
+  .accordion { cursor:pointer; }
+  .accordion + .panel { display:none; padding:0.5rem 1rem; background:rgba(255,255,255,0.05); border-left:3px solid #D4AF37; margin-bottom:1rem; }
+  button.buy { background:#D4AF37; color:black; font-weight:bold; padding:0.5rem 1rem; border-radius:0.5rem; margin-top:1rem; width:100%; }
+  button.buy:hover { background:#b9962f; }
+  .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:50; }
+  .modal-content { background:#0b0a0f; border:1px solid rgba(255,255,255,0.2); border-radius:1rem; padding:2rem; max-width:400px; width:90%; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:51; }
+  button.pay-option { background:white; color:black; font-weight:bold; padding:0.5rem 1rem; border-radius:0.5rem; margin:0.25rem 0; width:100%; }
+  button.pay-option:hover { background:#f0d55f; }
+  button.close { background:gray; color:white; font-weight:bold; padding:0.5rem 1rem; border-radius:0.5rem; width:100%; margin-top:0.5rem; }
 </style>
 </head>
 <body class="min-h-screen">
@@ -35,29 +35,49 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
   <p class="max-w-3xl mx-auto">Create stunning AI-generated videos effortlessly. Bring your ideas to life in cinematic quality. Choose your plan and start creating today.</p>
 </section>
 
-<!-- Video Creation -->
+<!-- Dashboard Overview -->
 <section class="section bg-gray-900">
-  <h2 class="text-3xl font-semibold mb-4 gold">Video Creation</h2>
-  <p>Create and render AI-powered cinematic videos directly from your dashboard. Customize duration, style, effects, and audio. Upload clips or use AI-generated content seamlessly.</p>
-  <ul class="list-disc list-inside mt-2">
-    <li>Select video duration: 6s – 3min+ depending on your plan</li>
-    <li>Choose cinematic style: Royal, Fantasy, Modern, etc.</li>
-    <li>Apply AI-generated effects & filters</li>
-    <li>Add voiceovers & background music</li>
-    <li>Preview before download</li>
+  <h2 class="text-3xl font-semibold mb-4 gold">Dashboard Overview</h2>
+  <ul class="list-disc list-inside">
+    <li>View your video history and credits</li>
+    <li>Quick actions: create, render, download</li>
+    <li>Fame Booster progress and rewards</li>
+    <li>Notifications and updates</li>
+  </ul>
+</section>
+
+<!-- Video Creation -->
+<section class="section">
+  <h2 class="text-3xl font-semibold mb-4 gold">Video Creation Tools</h2>
+  <ul class="list-disc list-inside">
+    <li>🎬 AI Video Creation: 6s – 3min+ depending on plan</li>
+    <li>📸 Photo-to-Video: turn images into cinematic clips</li>
+    <li>🎤 Lip Sync: sync AI voice to uploaded video or avatar</li>
+    <li>🔊 Audio Creation: AI voiceover & music overlay</li>
+    <li>🪄 Prompt-to-Video: type prompts, auto-generate videos</li>
   </ul>
   <button class="buy mt-4" onclick="alert('Go to Video Creation dashboard')">Start Creating</button>
 </section>
 
 <!-- Prompt Library -->
-<section class="section">
+<section class="section bg-gray-900">
   <h2 class="text-3xl font-semibold mb-4 gold">Prompt Library</h2>
-  <p>Access categorized prompts to quickly generate cinematic videos. Click 'Prompt Magic' to enhance your ideas instantly.</p>
+  <p>Access categorized prompts to generate cinematic videos faster. Use 'Prompt Magic' to enhance your ideas instantly.</p>
   <ul class="list-disc list-inside mt-2">
     <li>Categories: Funny, Royal, Baby, Fantasy, Cinematic, Trending</li>
-    <li>Ready-to-use templates for faster generation</li>
-    <li>Search and filter prompts</li>
-    <li>Save favorite prompts for repeated use</li>
+    <li>Ready-to-use templates</li>
+    <li>Search, filter, and save favorite prompts</li>
+  </ul>
+</section>
+
+<!-- Fame Booster -->
+<section class="section">
+  <h2 class="text-3xl font-semibold mb-4 gold">Kairah Fame Booster</h2>
+  <p>Boost your content visibility automatically! Gain more reach and engagement with these features:</p>
+  <ul class="list-disc list-inside mt-2">
+    <li>Viral AI suggestions & trending templates</li>
+    <li>Automatic optimization of videos for social media</li>
+    <li>Boosters free for certain plans as listed below</li>
   </ul>
 </section>
 
@@ -90,7 +110,7 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
         <li>Yearly Plan: $300</li>
       </ul>
       <p>Kairah Fame Booster: Free for 30 days</p>
-      <button class="buy" onclick="openPaymentModal('Pro', 19)">Subscribe</button>
+      <button class="buy" onclick="openPaymentModal('Pro',19)">Subscribe</button>
     </div>
     <!-- Diamond Plan -->
     <div class="card">
@@ -104,7 +124,7 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
         <li>Yearly Plan: $450</li>
       </ul>
       <p>Kairah Fame Booster: Free for 6 months</p>
-      <button class="buy" onclick="openPaymentModal('Diamond', 49)">Subscribe</button>
+      <button class="buy" onclick="openPaymentModal('Diamond',49)">Subscribe</button>
     </div>
     <!-- Cinematic Plan -->
     <div class="card">
@@ -118,7 +138,7 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
         <li>Yearly Plan: $600</li>
       </ul>
       <p>Kairah Fame Booster: Free permanently</p>
-      <button class="buy" onclick="openPaymentModal('Cinematic', 99)">Subscribe</button>
+      <button class="buy" onclick="openPaymentModal('Cinematic',99)">Subscribe</button>
     </div>
     <!-- Lifetime Plan -->
     <div class="card">
@@ -131,41 +151,24 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
         <li>Lifetime priority support</li>
       </ul>
       <p>Kairah Fame Booster: Free permanently</p>
-      <button class="buy" onclick="openPaymentModal('Lifetime', 500)">Buy Now</button>
+      <button class="buy" onclick="openPaymentModal('Lifetime',500)">Buy Now</button>
     </div>
   </div>
 </section>
 
-<!-- Payment Modal -->
-<div id="paymentModal" style="display:none;">
-  <div class="modal-backdrop"></div>
-  <div class="modal-content text-center">
-    <h2 class="text-2xl mb-4 gold" id="modalPlan">Plan</h2>
-    <p id="modalAmount" class="mb-4"></p>
-    <button class="pay-option" onclick="alert('Paystack integration goes here')">Paystack</button>
-    <button class="pay-option" onclick="alert('Stripe integration goes here')">Stripe</button>
-    <button class="pay-option" onclick="alert('PayPal integration goes here')">PayPal</button>
-    <button class="pay-option" onclick="alert('Wise integration goes here')">Wise</button>
-    <button class="pay-option" onclick="showMpesa()">M-Pesa</button>
-    <button class="close" onclick="closePaymentModal()">Cancel</button>
-  </div>
-</div>
-
-<!-- M-Pesa Modal -->
-<div id="mpesaModal" style="display:none;">
-  <div class="modal-backdrop"></div>
-  <div class="modal-content text-center">
-    <h2 class="text-2xl mb-4 gold">Pay with M-Pesa</h2>
-    <p>Send payment to this number:</p>
-    <p class="font-bold mb-4 text-white">0113554446</p>
-    <button class="pay-option" onclick="copyMpesa()">Copy Number</button>
-    <p class="mt-2 text-sm text-gray-300">After payment, confirm your email/username to get access.</p>
-    <button class="close mt-2" onclick="closeMpesaModal()">Close</button>
-  </div>
-</div>
+<!-- Affiliates -->
+<section class="section">
+  <h2 class="text-3xl font-semibold mb-4 gold">Affiliates</h2>
+  <ul class="list-disc list-inside">
+    <li>Earn 30% commission on all referred subscriptions</li>
+    <li>Lifetime plan bonus: $500 for every 100 sales</li>
+    <li>Track clicks, conversions, and payouts from your dashboard</li>
+    <li>Marketing assets provided for promotion</li>
+  </ul>
+</section>
 
 <!-- FAQ -->
-<section class="section">
+<section class="section bg-gray-900">
   <h2 class="text-3xl font-semibold mb-4 gold">FAQ</h2>
   <div>
     <div class="accordion">How do I create my first video?</div>
@@ -184,7 +187,7 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
     <div class="panel">Via email linked to your dashboard.</div>
 
     <div class="accordion">What is the Kairah Fame Booster?</div>
-    <div class="panel">Additional promotional tools for subscribers.</div>
+    <div class="panel">Additional promotional tools for subscribers to increase reach and visibility.</div>
 
     <div class="accordion">Are payments secure?</div>
     <div class="panel">Yes, all major payment gateways are integrated.</div>
@@ -201,9 +204,20 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
 </section>
 
 <!-- Support / Contact -->
-<section class="section bg-gray-900">
+<section class="section">
   <h2 class="text-3xl font-semibold mb-4 gold">Support / Contact</h2>
   <p>Email: <a href="mailto:keishapoa@gmail.com" class="underline">keishapoa@gmail.com</a></p>
+</section>
+
+<!-- Settings / Profile / Activity / Terms (placeholders) -->
+<section class="section bg-gray-900">
+  <h2 class="text-3xl font-semibold mb-4 gold">Account & Settings</h2>
+  <ul class="list-disc list-inside">
+    <li>Profile & Subscription details</li>
+    <li>Activity & Video History</li>
+    <li>Notifications</li>
+    <li>Terms & Policies</li>
+  </ul>
 </section>
 
 <!-- Footer -->
@@ -211,33 +225,60 @@ button.close { background: gray; color: white; font-weight: bold; padding: 0.5re
   © 2025 Kairah Studio — Divine Cinematics by AI
 </footer>
 
+<!-- Payment Modals -->
+<div id="paymentModal" style="display:none;">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content text-center">
+    <h2 class="text-2xl mb-4 gold" id="modalPlan">Plan</h2>
+    <p id="modalAmount" class="mb-4"></p>
+    <button class="pay-option" onclick="alert('Paystack integration goes here')">Paystack</button>
+    <button class="pay-option" onclick="alert('Stripe integration goes here')">Stripe</button>
+    <button class="pay-option" onclick="alert('PayPal integration goes here')">PayPal</button>
+    <button class="pay-option" onclick="alert('Wise integration goes here')">Wise</button>
+    <button class="pay-option" onclick="showMpesa()">M-Pesa</button>
+    <button class="close" onclick="closePaymentModal()">Cancel</button>
+  </div>
+</div>
+
+<div id="mpesaModal" style="display:none;">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content text-center">
+    <h2 class="text-2xl mb-4 gold">Pay with M-Pesa</h2>
+    <p>Send payment to this number:</p>
+    <p class="font-bold mb-4 text-white">0113554446</p>
+    <button class="pay-option" onclick="copyMpesa()">Copy Number</button>
+    <p class="mt-2 text-sm text-gray-300">After payment, confirm your email/username to get access.</p>
+    <button class="close mt-2" onclick="closeMpesaModal()">Close</button>
+  </div>
+</div>
+
 <script>
 // FAQ Accordion
-document.querySelectorAll(".accordion").forEach(a => {
-  a.addEventListener("click", () => {
-    const panel = a.nextElementSibling;
-    panel.style.display = panel.style.display === "block" ? "none" : "block";
+document.querySelectorAll(".accordion").forEach(a=>{
+  a.addEventListener("click",()=> {
+    const panel=a.nextElementSibling;
+    panel.style.display=panel.style.display==="block"?"none":"block";
   });
 });
 
 // Payment Modal Functions
-function openPaymentModal(plan, amount){
-  document.getElementById("modalPlan").innerText = plan;
-  document.getElementById("modalAmount").innerText = "$" + amount;
-  document.getElementById("paymentModal").style.display = "block";
+function openPaymentModal(plan,amount){
+  document.getElementById("modalPlan").innerText=plan;
+  document.getElementById("modalAmount").innerText="$"+amount;
+  document.getElementById("paymentModal").style.display="block";
 }
 function closePaymentModal(){
-  document.getElementById("paymentModal").style.display = "none";
+  document.getElementById("paymentModal").style.display="none";
 }
 function showMpesa(){
   closePaymentModal();
-  document.getElementById("mpesaModal").style.display = "block";
+  document.getElementById("mpesaModal").style.display="block";
 }
 function closeMpesaModal(){
-  document.getElementById("mpesaModal").style.display = "none";
+  document.getElementById("mpesaModal").style.display="none";
 }
 function copyMpesa(){
-  navigator.clipboard.writeText("0113554446").then(() => alert("M-Pesa number copied!"));
+  navigator.clipboard.writeText("0113554446").then(()=>alert("M-Pesa number copied!"));
 }
 </script>
 
