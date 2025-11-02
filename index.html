@@ -1,0 +1,232 @@
+import React, { useState } from "react";
+
+const App = () => {
+  const [modalPlan, setModalPlan] = useState("");
+  const [modalAmount, setModalAmount] = useState("");
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showMpesaPopup, setShowMpesaPopup] = useState(false);
+
+  const openModal = (plan, amount) => {
+    setModalPlan(plan);
+    setModalAmount(amount);
+    setShowPaymentModal(true);
+  };
+
+  const closeModal = () => setShowPaymentModal(false);
+  const closeMpesaPopup = () => setShowMpesaPopup(false);
+  const showMpesaNumber = () => {
+    setShowPaymentModal(false);
+    setShowMpesaPopup(true);
+  };
+  const copyMpesaNumber = () => {
+    navigator.clipboard.writeText("0113554446").then(() => {
+      alert("M-Pesa number copied to clipboard!");
+    });
+  };
+  const pay = (method) => {
+    if (method === "M-Pesa") showMpesaNumber();
+    else {
+      alert(`You chose ${method}. Integration goes here.`);
+      closeModal();
+    }
+  };
+
+  return (
+    <div className="text-white min-h-screen flex flex-col" style={{ background: "linear-gradient(135deg, #0e0b1b, #1e1632)", fontFamily: "'Poppins', sans-serif" }}>
+      {/* Header */}
+      <header className="text-center py-6 text-5xl font-bold text-[#D4AF37] border-b border-[#D4AF37]">
+        KAIRAH STUDIO
+      </header>
+
+      {/* Main content */}
+      <main className="flex flex-col md:flex-row flex-1">
+        {/* Sidebar */}
+        <aside className="bg-[#3D2C41] w-64 min-h-screen p-6 flex flex-col gap-2">
+          <a href="#Hero" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Home</a>
+          <a href="#Dashboard" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Dashboard</a>
+          <a href="#Pricing" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Pricing / Plans</a>
+          <a href="#VideoCreation" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Video Creation</a>
+          <a href="#PromptLibrary" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Prompt Library</a>
+          <a href="#Affiliates" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Affiliates</a>
+          <a href="#FAQ" className="hover:bg-[#4b2c61] px-3 py-2 rounded">FAQ</a>
+          <a href="#Support" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Support / Contact</a>
+          <a href="#Settings" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Settings / Profile</a>
+          <a href="#Terms" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Terms & Policies</a>
+          <a href="#Notifications" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Notifications</a>
+          <a href="#Activity" className="hover:bg-[#4b2c61] px-3 py-2 rounded">Activity / History</a>
+        </aside>
+
+        {/* Main area */}
+        <div className="flex-1 p-6">
+          {/* Hero Section */}
+          <section id="Hero" className="text-center mb-12">
+            <h1 className="text-5xl font-bold mb-4 text-[#D4AF37]">Welcome to Kairah Studio</h1>
+            <p className="text-gray-300 text-xl">
+              Create stunning AI-generated videos effortlessly. Bring your ideas to life in cinematic quality. Choose your plan and start creating today.
+            </p>
+          </section>
+
+          {/* Dashboard */}
+          <section id="Dashboard" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Dashboard</h2>
+            <p className="text-gray-300 mb-6">Overview of stats, video history, credits, and quick actions.</p>
+          </section>
+
+          {/* Pricing / Plans */}
+          <section id="Pricing" className="mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-[#D4AF37]">Pricing / Plans</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+              {/* Free Plan */}
+              <PlanCard title="Free" price="₤0 / month" duration="6 seconds" features={["1 short teaser video", "Perfect for testing", "Limited resolution"]} booster="Not included" disabled />
+
+              {/* Pro Plan */}
+              <PlanCard title="Pro" price="$19 / month" duration="up to 30 seconds" features={["10 full-quality videos per month","Faster rendering","Standard cinematic effects","Yearly Plan: $300"]} booster="Free for 30 days" onClick={() => openModal("Pro", 19)} />
+
+              {/* Diamond Plan */}
+              <PlanCard title="Diamond" price="$49 / month" duration="up to 1 minute" features={["Unlimited HD videos","Priority rendering","Premium effects & transitions","Yearly Plan: $450"]} booster="Free for 6 months" onClick={() => openModal("Diamond", 49)} />
+
+              {/* Cinematic Plan */}
+              <PlanCard title="Cinematic" price="$99 / month" duration="2–3 minutes" features={["Unlimited ultra-HD videos","Advanced cinematic filters","Sound-enhanced AI voice scenes","Yearly Plan: $600"]} booster="Free permanently" onClick={() => openModal("Cinematic", 99)} />
+
+              {/* Lifetime Plan */}
+              <PlanCard title="Lifetime" price="$500 / one-time" duration="Unlimited access forever" features={["Unlimited cinematic generation","All future features included","Lifetime priority support"]} booster="Free permanently" onClick={() => openModal("Lifetime", 500)} />
+
+            </div>
+          </section>
+
+          {/* Video Creation */}
+          <section id="VideoCreation" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Video Creation</h2>
+            <p className="text-gray-300">Create and render your AI-powered cinematic videos directly from your dashboard. Options include duration, style, effects, and audio customization.</p>
+          </section>
+
+          {/* Prompt Library */}
+          <section id="PromptLibrary" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Prompt Library</h2>
+            <p className="text-gray-300">Access categorized prompts: funny, royal, baby, fantasy, cinematic. Use 'Prompt Magic' to enhance your AI input instantly.</p>
+          </section>
+
+          {/* Affiliates */}
+          <section id="Affiliates" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Affiliates</h2>
+            <p className="text-gray-300 mb-2">Earn 30% commission on all referred subscriptions. Lifetime plan: $500 bonus for every 100 sales.</p>
+            <p className="text-gray-300">Track clicks, conversions, and payouts from your dashboard. Marketing assets provided.</p>
+          </section>
+
+          {/* FAQ */}
+          <section id="FAQ" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">FAQ</h2>
+            <ol className="list-decimal list-inside text-gray-300 space-y-2">
+              <li>How do I create my first video? – Go to Video Creation and input your prompt, select duration & style, then render.</li>
+              <li>What formats are supported? – MP4, HD quality, up to ultra-HD for Cinematic and Lifetime.</li>
+              <li>Can I upgrade my plan? – Yes, upgrades are instant and prorated.</li>
+              <li>Is there a free trial? – Free plan allows one 6-second video per email.</li>
+              <li>How do I get affiliate payouts? – Via email linked to your dashboard.</li>
+              <li>What is the Kairah Fame Booster? – Additional promotional tools for subscribers.</li>
+              <li>Are payments secure? – Yes, all major payment gateways are integrated.</li>
+              <li>Can I cancel my subscription? – Yes, anytime from the dashboard.</li>
+              <li>Is support available 24/7? – Support is primarily email-based; response within 24 hours.</li>
+              <li>Do you offer custom video requests? – Contact support for special requests.</li>
+            </ol>
+          </section>
+
+          {/* Support / Contact */}
+          <section id="Support" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Support / Contact</h2>
+            <p className="text-gray-300">Email: <a href="mailto:keishapoa@gmail.com" className="underline">keishapoa@gmail.com</a></p>
+          </section>
+
+          {/* Settings / Profile */}
+          <section id="Settings" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Settings / Profile</h2>
+            <p className="text-gray-300">Manage your account details, email, password, subscription, preferences, notifications, and security settings.</p>
+          </section>
+
+          {/* Terms & Policies */}
+          <section id="Terms" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Terms & Policies / Disclaimers</h2>
+            <p className="text-gray-300">All users must comply with our Terms of Service and Privacy Policy. Kairah Studio provides AI-generated content; results may vary. Users are responsible for content usage and copyright compliance.</p>
+          </section>
+
+          {/* Notifications */}
+          <section id="Notifications" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Notifications</h2>
+            <p className="text-gray-300">Real-time updates about video rendering, subscription renewals, affiliate commissions, and new features appear here.</p>
+          </section>
+
+          {/* Activity / History */}
+          <section id="Activity" className="mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-[#D4AF37]">Activity / History</h2>
+            <p className="text-gray-300">Track all your generated videos, affiliate referrals, payments, subscription changes, and login activity.</p>
+          </section>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#1A1A1A] p-6 text-center text-gray-400">
+        © 2025 Kairah Studio — Divine Cinematics by AI
+      </footer>
+
+      {/* Payment Modal */}
+      {showPaymentModal && (
+        <div className="modal fixed inset-0 flex items-center justify-center z-50">
+          <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)]"></div>
+          <div className="bg-[#0b0a0f] rounded-2xl p-8 border border-[rgba(255,255,255,0.2)] max-w-sm w-[90%] text-center">
+            <h2 className="text-2xl mb-4 text-[#D4AF37]">Pay for {modalPlan}</h2>
+            <p className="text-gray-300 mb-4">Amount: ${modalAmount}</p>
+            <button className="w-full my-1 p-2 rounded bg-white text-black" onClick={() => pay("Paystack")}>Paystack</button>
+            <button className="w-full my-1 p-2 rounded bg-white text-black" onClick={() => pay("Stripe")}>Stripe</button>
+            <button className="w-full my-1 p-2 rounded bg-white text-black" onClick={() => pay("PayPal")}>PayPal</button>
+            <button className="w-full my-1 p-2 rounded bg-white text-black" onClick={() => pay("Wise")}>Wise</button>
+            <button className="w-full my-1 p-2 rounded bg-green-500 text-black" onClick={showMpesaNumber}>M-Pesa</button>
+            <button className="mt-4 bg-gray-600 text-white w-full py-2 rounded-lg" onClick={closeModal}>Cancel</button>
+          </div>
+        </div>
+      )}
+
+      {/* M-Pesa Popup */}
+      {showMpesaPopup && (
+        <div className="modal fixed inset-0 flex items-center justify-center z-50">
+          <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)]"></div>
+          <div className="bg-[#0b0a0f] rounded-2xl p-8 border border-[rgba(255,255,255,0.2)] max-w-sm w-[90%] text-center">
+            <h2 className="text-2xl mb-4 text-[#D4AF37]">Pay with M-Pesa</h2>
+            <p className="text-gray-300 mb-2">Send your payment to this number:</p>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-white font-bold text-lg">0113554446</span>
+              <button className="bg-gray-200 text-black px-3 py-1 rounded" onClick={copyMpesaNumber}>Copy</button>
+            </div>
+            <p className="text-gray-400 text-sm mb-4">
+              Step 1: Open your M-Pesa menu. <br/>
+              Step 2: Select “Send Money” and enter <strong>0113554446</strong>.<br/>
+              Step 3: Enter the amount displayed on the pricing plan.<br/>
+              Step 4: Confirm with your PIN.<br/>
+              Step 5: Confirm your email/username to get access.
+            </p>
+            <button className="mt-4 bg-gray-600 text-white w-full py-2 rounded-lg" onClick={closeMpesaPopup}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Reusable Plan Card
+const PlanCard = ({ title, price, duration, features, booster, onClick, disabled }) => (
+  <div className="card bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.15)] rounded-2xl backdrop-blur-[15px] flex flex-col items-center p-6 hover:translate-y-[-8px] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all">
+    <div className="badge bg-[#D4AF37] text-black font-bold px-2 py-1 rounded text-sm mb-2">{title}</div>
+    <h2 className="text-2xl font-semibold mb-2 text-[#D4AF37]">{title}</h2>
+    <p className="text-gray-400 mb-2">{price}</p>
+    <p className="text-sm text-gray-300 mb-4">Duration: {duration}</p>
+    <ul className="text-sm text-gray-300 space-y-1 mb-4">{features.map((f,i)=><li key={i}>🎬 {f}</li>)}</ul>
+    <div className="text-[#00FF99] font-semibold mt-2">Kairah Fame Booster: {booster}</div>
+    <button
+      className={`mt-2 px-5 py-2 rounded-lg w-full font-semibold ${disabled ? "bg-gray-500 text-white" : "bg-[#D4AF37] text-black hover:bg-[#b9962f]"}`}
+      onClick={onClick} disabled={disabled}
+    >
+      {disabled ? "Included" : "Subscribe"}
+    </button>
+  </div>
+);
+
+export default App;
