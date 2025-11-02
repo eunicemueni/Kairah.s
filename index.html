@@ -1,182 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kairah Studio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0e0b1b, #1e1632);
-      color: white;
-    }
-    .gold { color: #D4AF37; }
-    .section { padding: 4rem 2rem; }
-    .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 1.5rem; backdrop-filter: blur(15px); }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-    a:hover { text-decoration: underline; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairah Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #0e0b1b, #1e1632); color: white; }
+.gold { color: #D4AF37; }
+.section { padding: 4rem 2rem; }
+.card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 1.5rem; backdrop-filter: blur(15px); transition: transform 0.3s, box-shadow 0.3s; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+.accordion { cursor: pointer; }
+.accordion + .panel { display: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border-left: 3px solid #D4AF37; margin-bottom: 1rem; }
+button.buy { background: #D4AF37; color: black; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; margin-top: 1rem; width: 100%; }
+button.buy:hover { background: #b9962f; }
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50; }
+.modal-content { background: #0b0a0f; border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 2rem; max-width: 400px; width: 90%; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 51; }
+button.pay-option { background: white; color: black; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; margin: 0.25rem 0; width: 100%; }
+button.pay-option:hover { background: #f0d55f; }
+button.close { background: gray; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; width: 100%; margin-top: 0.5rem; }
+</style>
 </head>
 <body class="min-h-screen">
 
-  <!-- Header -->
-  <header class="section text-center">
-    <h1 class="text-5xl font-bold gold">KAIRAH STUDIO</h1>
-  </header>
+<!-- Header -->
+<header class="section text-center">
+  <h1 class="text-5xl font-bold gold">KAIRAH STUDIO</h1>
+</header>
 
-  <!-- Hero Section -->
-  <section class="section text-center">
-    <h2 class="text-3xl font-semibold mb-4">Welcome to Kairah Studio</h2>
-    <p class="max-w-3xl mx-auto">Create stunning AI-generated videos effortlessly. Bring your ideas to life in cinematic quality. Choose your plan and start creating today.</p>
-  </section>
+<!-- Hero Section -->
+<section class="section text-center">
+  <h2 class="text-3xl font-semibold mb-4">Welcome to Kairah Studio</h2>
+  <p class="max-w-3xl mx-auto">Create stunning AI-generated videos effortlessly. Bring your ideas to life in cinematic quality. Choose your plan and start creating today.</p>
+</section>
 
-  <!-- Dashboard -->
-  <section class="section bg-gray-900">
-    <h2 class="text-3xl font-semibold mb-4 gold">Dashboard</h2>
-    <p>Overview of user stats, video history, credits, and quick actions.</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-      <div class="card">Total Videos: 24</div>
-      <div class="card">Credits: 10</div>
-      <div class="card">Quick Action: Create New Video</div>
+<!-- Video Creation -->
+<section class="section bg-gray-900">
+  <h2 class="text-3xl font-semibold mb-4 gold">Video Creation</h2>
+  <p>Create and render AI-powered cinematic videos directly from your dashboard. Customize duration, style, effects, and audio. Upload clips or use AI-generated content seamlessly.</p>
+  <ul class="list-disc list-inside mt-2">
+    <li>Select video duration: 6s – 3min+ depending on your plan</li>
+    <li>Choose cinematic style: Royal, Fantasy, Modern, etc.</li>
+    <li>Apply AI-generated effects & filters</li>
+    <li>Add voiceovers & background music</li>
+    <li>Preview before download</li>
+  </ul>
+  <button class="buy mt-4" onclick="alert('Go to Video Creation dashboard')">Start Creating</button>
+</section>
+
+<!-- Prompt Library -->
+<section class="section">
+  <h2 class="text-3xl font-semibold mb-4 gold">Prompt Library</h2>
+  <p>Access categorized prompts to quickly generate cinematic videos. Click 'Prompt Magic' to enhance your ideas instantly.</p>
+  <ul class="list-disc list-inside mt-2">
+    <li>Categories: Funny, Royal, Baby, Fantasy, Cinematic, Trending</li>
+    <li>Ready-to-use templates for faster generation</li>
+    <li>Search and filter prompts</li>
+    <li>Save favorite prompts for repeated use</li>
+  </ul>
+</section>
+
+<!-- Pricing / Plans -->
+<section class="section bg-gray-900">
+  <h2 class="text-3xl font-semibold mb-4 gold">Pricing / Plans</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <!-- Free Plan -->
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-2 gold">Free</h3>
+      <p>₤0 / month</p>
+      <p class="mb-2">Duration: 6 seconds</p>
+      <ul class="mb-2">
+        <li>1 short teaser video</li>
+        <li>Perfect for testing</li>
+        <li>Limited resolution</li>
+      </ul>
+      <p>Kairah Fame Booster: Not included</p>
+      <button class="buy" disabled>Included</button>
     </div>
-  </section>
-
-  <!-- Pricing / Plans -->
-  <section class="section">
-    <h2 class="text-3xl font-semibold mb-4 gold">Pricing / Plans</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-      <!-- Free Plan -->
-      <div class="card">
-        <h3 class="text-2xl font-bold mb-2 gold">Free</h3>
-        <p>₤0 / month</p>
-        <p class="mb-2">Duration: 6 seconds</p>
-        <ul class="mb-2">
-          <li>1 short teaser video</li>
-          <li>Perfect for testing</li>
-          <li>Limited resolution</li>
-        </ul>
-        <p>Kairah Fame Booster: Not included</p>
-      </div>
-      <!-- Pro Plan -->
-      <div class="card">
-        <h3 class="text-2xl font-bold mb-2 gold">Pro</h3>
-        <p>$19 / month</p>
-        <p class="mb-2">Duration: up to 30 seconds</p>
-        <ul class="mb-2">
-          <li>10 full-quality videos per month</li>
-          <li>Faster rendering</li>
-          <li>Standard cinematic effects</li>
-          <li>Yearly Plan: $300</li>
-        </ul>
-        <p>Kairah Fame Booster: Free for 30 days</p>
-      </div>
-      <!-- Diamond Plan -->
-      <div class="card">
-        <h3 class="text-2xl font-bold mb-2 gold">Diamond</h3>
-        <p>$49 / month</p>
-        <p class="mb-2">Duration: up to 1 minute</p>
-        <ul class="mb-2">
-          <li>Unlimited HD videos</li>
-          <li>Priority rendering</li>
-          <li>Premium effects & transitions</li>
-          <li>Yearly Plan: $450</li>
-        </ul>
-        <p>Kairah Fame Booster: Free for 6 months</p>
-      </div>
-      <!-- Cinematic Plan -->
-      <div class="card">
-        <h3 class="text-2xl font-bold mb-2 gold">Cinematic</h3>
-        <p>$99 / month</p>
-        <p class="mb-2">Duration: 2–3 minutes</p>
-        <ul class="mb-2">
-          <li>Unlimited ultra-HD videos</li>
-          <li>Advanced cinematic filters</li>
-          <li>Sound-enhanced AI voice scenes</li>
-          <li>Yearly Plan: $600</li>
-        </ul>
-        <p>Kairah Fame Booster: Free permanently</p>
-      </div>
-      <!-- Lifetime Plan -->
-      <div class="card">
-        <h3 class="text-2xl font-bold mb-2 gold">Lifetime</h3>
-        <p>$500 / one-time</p>
-        <p class="mb-2">Duration: Unlimited access forever</p>
-        <ul class="mb-2">
-          <li>Unlimited cinematic generation</li>
-          <li>All future features included</li>
-          <li>Lifetime priority support</li>
-        </ul>
-        <p>Kairah Fame Booster: Free permanently</p>
-      </div>
+    <!-- Pro Plan -->
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-2 gold">Pro</h3>
+      <p>$19 / month</p>
+      <p class="mb-2">Duration: up to 30 seconds</p>
+      <ul class="mb-2">
+        <li>10 full-quality videos per month</li>
+        <li>Faster rendering</li>
+        <li>Standard cinematic effects</li>
+        <li>Yearly Plan: $300</li>
+      </ul>
+      <p>Kairah Fame Booster: Free for 30 days</p>
+      <button class="buy" onclick="openPaymentModal('Pro', 19)">Subscribe</button>
     </div>
-  </section>
+    <!-- Diamond Plan -->
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-2 gold">Diamond</h3>
+      <p>$49 / month</p>
+      <p class="mb-2">Duration: up to 1 minute</p>
+      <ul class="mb-2">
+        <li>Unlimited HD videos</li>
+        <li>Priority rendering</li>
+        <li>Premium effects & transitions</li>
+        <li>Yearly Plan: $450</li>
+      </ul>
+      <p>Kairah Fame Booster: Free for 6 months</p>
+      <button class="buy" onclick="openPaymentModal('Diamond', 49)">Subscribe</button>
+    </div>
+    <!-- Cinematic Plan -->
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-2 gold">Cinematic</h3>
+      <p>$99 / month</p>
+      <p class="mb-2">Duration: 2–3 minutes</p>
+      <ul class="mb-2">
+        <li>Unlimited ultra-HD videos</li>
+        <li>Advanced cinematic filters</li>
+        <li>Sound-enhanced AI voice scenes</li>
+        <li>Yearly Plan: $600</li>
+      </ul>
+      <p>Kairah Fame Booster: Free permanently</p>
+      <button class="buy" onclick="openPaymentModal('Cinematic', 99)">Subscribe</button>
+    </div>
+    <!-- Lifetime Plan -->
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-2 gold">Lifetime</h3>
+      <p>$500 / one-time</p>
+      <p class="mb-2">Duration: Unlimited access forever</p>
+      <ul class="mb-2">
+        <li>Unlimited cinematic generation</li>
+        <li>All future features included</li>
+        <li>Lifetime priority support</li>
+      </ul>
+      <p>Kairah Fame Booster: Free permanently</p>
+      <button class="buy" onclick="openPaymentModal('Lifetime', 500)">Buy Now</button>
+    </div>
+  </div>
+</section>
 
-  <!-- Video Creation -->
-  <section class="section bg-gray-900">
-    <h2 class="text-3xl font-semibold mb-4 gold">Video Creation</h2>
-    <p>Create and render AI-powered cinematic videos directly from your dashboard. Customize duration, style, effects, and audio.</p>
-    <button class="mt-4 px-6 py-2 rounded-lg bg-[#D4AF37] text-black font-semibold">Create New Video</button>
-  </section>
+<!-- Payment Modal -->
+<div id="paymentModal" style="display:none;">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content text-center">
+    <h2 class="text-2xl mb-4 gold" id="modalPlan">Plan</h2>
+    <p id="modalAmount" class="mb-4"></p>
+    <button class="pay-option" onclick="alert('Paystack integration goes here')">Paystack</button>
+    <button class="pay-option" onclick="alert('Stripe integration goes here')">Stripe</button>
+    <button class="pay-option" onclick="alert('PayPal integration goes here')">PayPal</button>
+    <button class="pay-option" onclick="alert('Wise integration goes here')">Wise</button>
+    <button class="pay-option" onclick="showMpesa()">M-Pesa</button>
+    <button class="close" onclick="closePaymentModal()">Cancel</button>
+  </div>
+</div>
 
-  <!-- Prompt Library -->
-  <section class="section">
-    <h2 class="text-3xl font-semibold mb-4 gold">Prompt Library</h2>
-    <p>Access categorized prompts: funny, royal, baby, fantasy, cinematic. Use "Prompt Magic" to enhance your AI input instantly.</p>
-  </section>
+<!-- M-Pesa Modal -->
+<div id="mpesaModal" style="display:none;">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content text-center">
+    <h2 class="text-2xl mb-4 gold">Pay with M-Pesa</h2>
+    <p>Send payment to this number:</p>
+    <p class="font-bold mb-4 text-white">0113554446</p>
+    <button class="pay-option" onclick="copyMpesa()">Copy Number</button>
+    <p class="mt-2 text-sm text-gray-300">After payment, confirm your email/username to get access.</p>
+    <button class="close mt-2" onclick="closeMpesaModal()">Close</button>
+  </div>
+</div>
 
-  <!-- Affiliates -->
-  <section class="section bg-gray-900">
-    <h2 class="text-3xl font-semibold mb-4 gold">Affiliates</h2>
-    <p>Earn 30% commission on all referred subscriptions. Lifetime plan: $500 bonus for every 100 sales.</p>
-    <p>Track clicks, conversions, and payouts from your dashboard. Marketing assets provided.</p>
-  </section>
+<!-- FAQ -->
+<section class="section">
+  <h2 class="text-3xl font-semibold mb-4 gold">FAQ</h2>
+  <div>
+    <div class="accordion">How do I create my first video?</div>
+    <div class="panel">Go to Video Creation, input your prompt, select duration & style, then render.</div>
 
-  <!-- FAQ -->
-  <section class="section">
-    <h2 class="text-3xl font-semibold mb-4 gold">FAQ</h2>
-    <ol class="list-decimal list-inside space-y-2">
-      <li>How do I create my first video? – Go to Video Creation and input your prompt, select duration & style, then render.</li>
-      <li>What formats are supported? – MP4, HD quality, up to ultra-HD for Cinematic and Lifetime plans.</li>
-      <li>Can I upgrade my plan? – Yes, upgrades are instant and prorated.</li>
-      <li>Is there a free trial? – Free plan allows one 6-second video per email.</li>
-      <li>How do I get affiliate payouts? – Via email linked to your dashboard.</li>
-      <li>What is the Kairah Fame Booster? – Additional promotional tools for subscribers.</li>
-      <li>Are payments secure? – Yes, all major payment gateways are integrated.</li>
-      <li>Can I cancel my subscription? – Yes, anytime from the dashboard.</li>
-      <li>Is support available 24/7? – Support is email-based; response within 24 hours.</li>
-      <li>Do you offer custom video requests? – Contact support for special requests.</li>
-    </ol>
-  </section>
+    <div class="accordion">What formats are supported?</div>
+    <div class="panel">MP4, HD quality, up to ultra-HD for Cinematic and Lifetime plans.</div>
 
-  <!-- Support / Contact -->
-  <section class="section bg-gray-900">
-    <h2 class="text-3xl font-semibold mb-4 gold">Support / Contact</h2>
-    <p>Email: <a href="mailto:keishapoa@gmail.com" class="underline">keishapoa@gmail.com</a></p>
-  </section>
+    <div class="accordion">Can I upgrade my plan?</div>
+    <div class="panel">Yes, upgrades are instant and prorated.</div>
 
-  <!-- Terms & Policies -->
-  <section class="section">
-    <h2 class="text-3xl font-semibold mb-4 gold">Terms & Policies</h2>
-    <p>All users must adhere to our terms of service, privacy policy, and disclaimers. Content created must not violate copyright or third-party rights.</p>
-  </section>
+    <div class="accordion">Is there a free trial?</div>
+    <div class="panel">Free plan allows one 6-second video per email.</div>
 
-  <!-- Notifications -->
-  <section class="section bg-gray-900">
-    <h2 class="text-3xl font-semibold mb-4 gold">Notifications</h2>
-    <p>Stay updated with new features, plan upgrades, promotional offers, and video rendering status.</p>
-  </section>
+    <div class="accordion">How do I get affiliate payouts?</div>
+    <div class="panel">Via email linked to your dashboard.</div>
 
-  <!-- Activity / History -->
-  <section class="section">
-    <h2 class="text-3xl font-semibold mb-4 gold">Activity / History</h2>
-    <p>Track all your video creations, affiliate clicks, and plan changes from your dashboard history.</p>
-  </section>
+    <div class="accordion">What is the Kairah Fame Booster?</div>
+    <div class="panel">Additional promotional tools for subscribers.</div>
 
-  <!-- Footer -->
-  <footer class="section bg-gray-800 text-center text-gray-400 text-sm">
-    © 2025 Kairah Studio — Divine Cinematics by AI
-  </footer>
+    <div class="accordion">Are payments secure?</div>
+    <div class="panel">Yes, all major payment gateways are integrated.</div>
+
+    <div class="accordion">Can I cancel my subscription?</div>
+    <div class="panel">Yes, anytime from the dashboard.</div>
+
+    <div class="accordion">Is support available 24/7?</div>
+    <div class="panel">Support is email-based; response within 24 hours.</div>
+
+    <div class="accordion">Do you offer custom video requests?</div>
+    <div class="panel">Contact support for special requests.</div>
+  </div>
+</section>
+
+<!-- Support / Contact -->
+<section class="section bg-gray-900">
+  <h2 class="text-3xl font-semibold mb-4 gold">Support / Contact</h2>
+  <p>Email: <a href="mailto:keishapoa@gmail.com" class="underline">keishapoa@gmail.com</a></p>
+</section>
+
+<!-- Footer -->
+<footer class="section bg-gray-800 text-center text-gray-400 text-sm">
+  © 2025 Kairah Studio — Divine Cinematics by AI
+</footer>
+
+<script>
+// FAQ Accordion
+document.querySelectorAll(".accordion").forEach(a => {
+  a.addEventListener("click", () => {
+    const panel = a.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+});
+
+// Payment Modal Functions
+function openPaymentModal(plan, amount){
+  document.getElementById("modalPlan").innerText = plan;
+  document.getElementById("modalAmount").innerText = "$" + amount;
+  document.getElementById("paymentModal").style.display = "block";
+}
+function closePaymentModal(){
+  document.getElementById("paymentModal").style.display = "none";
+}
+function showMpesa(){
+  closePaymentModal();
+  document.getElementById("mpesaModal").style.display = "block";
+}
+function closeMpesaModal(){
+  document.getElementById("mpesaModal").style.display = "none";
+}
+function copyMpesa(){
+  navigator.clipboard.writeText("0113554446").then(() => alert("M-Pesa number copied!"));
+}
+</script>
 
 </body>
 </html>
